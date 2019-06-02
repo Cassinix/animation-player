@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Exo', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+main {
+    height: 94%;
+}
+
+.header-wrap {
+    display: flex;
+    background-color: #2d2d2d;
+    color: #808a8b;
+    height: 6%;
+}
+
+.logo {
+    padding: 5px 40px;
+}
+
+h1 {
+    margin: auto 390px;
+}
+
+.main-wrapper {
+    display: flex;
+    padding: 20px 5px 10px 60px;
+    justify-content: space-between;
+    background-color: #1d1d1d;
+    color: #808a8b;
+    height: 100%;
+}
+
+.left-sticky-section {
+    width: 10%;
+}
+
+h2 {
+    font-size: 36px;
+    margin: 15px;
+    color: #d8d8d8;
+}
+
+.tool {
+    margin: 10px 25px;
+    padding: 10px;
+    height: 70px;
+    width: 70px; 
+    background-color: #c4c4c4;
+    border-radius: 3px;
+    box-shadow: 0px 0px 0px 0px rgba(255,252,80,1);
+}
+
+.tool:hover {
+    background-color: #fffc50;
+}
+
+.center-section-wrapper {
+    width: 76%;
+    padding: 0 4%;
+    text-align: center;
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.application-action-section {
+    width: 10%;
+}
+
+.frames-tools-wrapper {
+    padding: 25px 10px;
+    max-width: 150px;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.frame-list {
+    max-height: 700px;
+    padding: 0;
+    overflow: scroll;
+}
+
+.frame-list > li {
+    background-image: url(../assets/img/small.png);
+    border-radius: 5px;
+}
+
+.frame {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 8px;
+    border-width: 3px;
+    border-color: #888888;
+    border-style: solid;
+    border-radius: 5px;
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.frame:hover {
+    border-color: #fffc50;
+    color:#fffc50;
+}
+
+.frame-detail {
+    height: 33px;
+    width: 33px;
+    padding: 5px;
+    background-color: transparent;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 23px;
+    color: inherit;
+}
+
+.frame-number {
+    margin: -2px 30px 30px -2px;
+    font-weight: 900;
+    color: #fffc50;
+}
+
+.frame-delete {
+    margin: -2px -2px 30px 30px;
+}
+
+.frame-move {
+    margin: 31px 30px -2px -2px;
+}
+
+.frame-copy {
+    margin: 31px -2px -2px 30px;
+}
+
+.add-frame-button {
+    height: 50px;
+    width: 130px;
+    padding: 5px;
+    display: flex;
+    margin-bottom: 8px;
+    border-width: 3px;
+    border-color: #888888;
+    border-style: solid;
+    border-radius: 5px;
+    color: #cfcfcf;
+    font-size: 14px;
+    text-align: center;
+}
+
+.add-frame-button:hover {
+    border-color: #fffc50;
+    color:#fffc50;
+}
+
+.plus {
+    font-size: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.canvas-wrapper {
+    width: 60%;
+}
+
+.main-canvas-wrapper {
+    margin: 25px;
+    height: 706px;
+    width: 706px;
+    background-image: url(../assets/img/large.png);
+    background-position: center;
+    background-size: 100%;
+}
+
+.main-canvas {
+    border: 3px solid #fffc4a9f;
+    border-radius: 5px;
+}
+
+.canvas-tools-wrapper {
+    width: 20%;
+}
+
+.preview-canvas-wrapper {
+    margin: 25px 0 ;
+    height: 256px;
+    width: 256px;
+    background-image: url(../assets/img/midle.png);
+}
+
+.preview-canvas {
+    border-width: 3px;
+    border-color: #888888;
+    border-style: solid;
+    border-radius: 5px;
+    background-position: center;
+    background-size: 100%;
+}
+
+.input-fps {
+    -webkit-appearance: none;
+    width: 175px;
+    height: 15px;
+    padding: 5px;
+    margin: 5px 38px;
+    border-radius: 2px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .input-fps:hover {
+    opacity: 1;
+  }
+  
+  .input-fps::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    background: #fffc50;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+
+.output-fps, span {
+    width: 20px;
+    padding: 5px;
+    margin: 10px 2px;
+    font-size: 24px;
+    color: #fffc50;
+}
+
+.animation-tools-container {
+    margin: 30px auto;
+}
+
+.toolbox {
+    margin: 10px 5px;
+    padding: 8px;
+    border-width: 3px;
+    border-color: #888888;
+    border-style: solid;
+    border-radius: 5px;
+    color: #cfcfcf;
+    font-size: 16px;
+    text-align: center;
+}
+

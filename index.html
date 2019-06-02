@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CodeJam Animation Player</title>
+    <script src="https://kit.fontawesome.com/19c895a8d0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Exo&display=swap" rel="stylesheet">
+    <link href="styles/normalize.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="header-wrap">
+        <img class="logo" src="assets/img/logo_small.png" alt="logo_small">
+        <h1>CodeJam Animation Player</h1>
+    </header>
+    <main>
+        <div id="main-wrapper" class="main-wrapper">
+            <section id="left-sticky-section" class="left-sticky-section">
+                <h2>Tools</h2>
+                <img src="https://image.flaticon.com/icons/svg/230/230340.svg" id="paint-tool" class="tool paint-icon">
+            </section>
+            <section id="center-section" class="center-section-wrapper">
+                <div id="frames-tools-wrapper" class="frames-tools-wrapper">
+                    <ul id="frame-list" class="frame-list">
+                    </ul>
+                    <div id="add-frame-button" class="add-frame-button">
+                        <div class="plus">+</div>
+                        <div>Add new frame</div>
+                    </div>
+                </div>
+                <div id="canvas-wrapper" class="canvas-wrapper">
+                    <div class="main-canvas-wrapper">
+                        <canvas id="main-canvas" class="main-canvas" width="700" height="700"></canvas>></canvas>
+                    </div>
+                 </div>
+                <div id="canvas-tools-wrapper" class="canvas-tools-wrapper">
+                    <div id="animated-preview-container" class="preview-container">
+                        <div class="preview-canvas-wrapper">
+                            <canvas id="preview-canvas" class="preview-canvas" width="250" height="250"></canvas>
+                        </div>
+                        <form name="fpsForm" id="fpsForm">
+                                <input class="input-fps" id="fps-input" type="range" name="fpsInput" id="fps" value="1" min="1" max="24">
+                                <output class="output-fps" id="fps-output" name="fpsOutput" id="fps">1</output> <span>fps</span>
+                        </form>
+                    </div>
+                    <div class="animation-tools-container">
+                        <div class="toolbox">Layers</div>
+                        <div class="toolbox">Transform</div>
+                        <div class="toolbox">Palettes</div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="application-action-section" class="application-action-section">
+                <h2>App Tools</h2>
+                <img src="https://image.flaticon.com/icons/svg/149/149151.svg" id="paint-tool" class="tool paint-icon">
+                <img src="https://image.flaticon.com/icons/svg/149/149151.svg" id="paint-tool" class="tool paint-icon">
+                <img src="https://image.flaticon.com/icons/svg/149/149151.svg" id="paint-tool" class="tool paint-icon">
+                <img src="https://image.flaticon.com/icons/svg/149/149151.svg" id="paint-tool" class="tool paint-icon">
+            </section>
+        </div>
+    </main>
+    <script src="scripts/index.js"></script>
+</body>
+<html lang="en"></html>
