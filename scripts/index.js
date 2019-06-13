@@ -13,32 +13,37 @@
     fpsOutput: document.getElementById('fps-output'),
   };
 
-  const canvas = {
+  const MainCanvasData = {
     paintingAllowed: false,
     isDrowing: false,
     context: AppDomElements.mainCanvas.getContext('2d'),
-    previewContext: AppDomElements.previewCanvas.getContext('2d'),
-    animationSpeed: 100 / AppDomElements.fpsOutput.value,
-    order: 0,
     penColor: '#c4c4c4',
+  };
+
+  const PreviewCanvasData = {
+    previewContext: AppDomElements.previewCanvas.getContext('2d'),
+    animationSpeed: AppDomElements.fpsOutput.value,
+    order: 0,
   };
 
   const storage = [];
 
   AppDomElements.fpsInput.addEventListener('input', () => {
     AppDomElements.fpsOutput.value = AppDomElements.fpsInput.value;
-    canvas.animationSpeed = 100 / AppDomElements.fpsOutput.value;
+    PreviewCanvasData.animationSpeed = AppDomElements.fpsOutput.value;
+    clearInterval(timer);
+    animate();
   });
 
   AppDomElements.paintTool.addEventListener('click', () => {
-    if (canvas.paintingAllowed === false) {
+    if (!MainCanvasData.paintingAllowed) {
       AppDomElements.paintTool.style.boxShadow = '0px 0px 13px 4px rgba(255,252,80,1)';
       AppDomElements.paintTool.style.backgroundColor = '#fffc50';
-      canvas.paintingAllowed = true;
-    } else if (canvas.paintingAllowed === true) {
+      MainCanvasData.paintingAllowed = true;
+    } else if (MainCanvasData) {
       AppDomElements.paintTool.style.boxShadow = '0px 0px 0px 0px rgba(255,252,80,1)';
-      AppDomElements.paintTool.style.backgroundColor = canvas.penColor;
-      canvas.paintingAllowed = false;
+      AppDomElements.paintTool.style.backgroundColor = MainCanvasData.penColor;
+      MainCanvasData.paintingAllowed = false;
     }
   });
 
@@ -82,31 +87,31 @@
   });
 
   function startDrawing(e) {
-    canvas.isDrawing = true;
-    canvas.context.lineWidth = 15;
-    canvas.context.lineCap = 'round';
-    canvas.context.strokeStyle = '#920c0c';
-    canvas.context.beginPath();
+    MainCanvasData.isDrawing = true;
+    MainCanvasData.context.lineWidth = 15;
+    MainCanvasData.context.lineCap = 'round';
+    MainCanvasData.context.strokeStyle = '#920c0c';
+    MainCanvasData.context.beginPath();
     const x = e.pageX - AppDomElements.mainCanvas.offsetLeft;
     const y = e.pageY - AppDomElements.mainCanvas.offsetTop;
-    canvas.context.moveTo(x, y);
+    MainCanvasData.context.moveTo(x, y);
   }
 
   function draw(e) {
-    if (canvas.isDrawing === true && canvas.paintingAllowed === true) {
+    if (MainCanvasData.isDrawing && MainCanvasData.paintingAllowed) {
       const x = e.pageX - AppDomElements.mainCanvas.offsetLeft;
       const y = e.pageY - AppDomElements.mainCanvas.offsetTop;
-      canvas.context.lineTo(x, y);
-      canvas.context.stroke();
+      MainCanvasData.context.lineTo(x, y);
+      MainCanvasData.context.stroke();
     }
   }
 
   function stopDrawing() {
-    canvas.isDrawing = false;
+    MainCanvasData.isDrawing = false;
   }
 
   function clearCanvas() {
-    canvas.context.clearRect(0, 0, 700, 700);
+    MainCanvasData.context.clearRect(0, 0, 700, 700);
   }
 
   AppDomElements.mainCanvas.onmousedown = startDrawing;
@@ -159,15 +164,27 @@
     clearCanvas();
   });
 
+  let timer;
   function animate() {
+    /*
     requestAnimationFrame(animate);
-    AppDomElements.previewCanvas.style.backgroundImage = storage[Math.round(canvas.order / canvas.animationSpeed)];
-    if (canvas.order < (storage.length) * canvas.animationSpeed) {
-      canvas.order += 1;
+    AppDomElements.previewCanvas.style.backgroundImage = storage[Math.round(PreviewCanvasData.order / PreviewCanvasData.animationSpeed)];
+    if (PreviewCanvasData.order < (storage.length) * PreviewCanvasData.animationSpeed) {
+      PreviewCanvasData.order += 1;
     } else {
-      canvas.order = 0;
+      PreviewCanvasData.order = 0;
     }
+    */
+   timer = setInterval(() => {
+       if (PreviewCanvasData.order < storage.length) {
+        AppDomElements.previewCanvas.style.backgroundImage = storage[PreviewCanvasData.order];
+        PreviewCanvasData.order++;
+        if (PreviewCanvasData.order === storage.length) {
+          PreviewCanvasData.order = 0;
+         }
+       }
+       console.log(Math.round(1000 / PreviewCanvasData.animationSpeed));
+   }, Math.round(1000 / PreviewCanvasData.animationSpeed));
   }
-
   animate();
 }());
